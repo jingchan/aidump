@@ -1,20 +1,40 @@
 # AI Code Dump (aidump) - Easy AI Coding
 
-Turn entire codebase into a single file.
+Turn codebase into a single file.
 
-AI Code Dump (aidump) is a lightweight CLI tool that simplifies AI coding. It
-recursively collects files in a directory into a single text file. This
-simplifies the process of gathering code for AI coding.
+AI Code Dump (aidump) is a lightweight CLI tool that simplifies AI coding and
+vibe coding.
+
+It recursively collects files in a directory into a single text file that can be
+easily added to the context of a prompt.
 
 ## Features
 
 - Recursively walks entire project directory.
-- Respects `.gitignore`.
-- Supports `.dumpignore` (similar to `.gitignore`).
-- Includes file paths before each file's content for context.
+- Ignores files specified in `.gitignore` and `.dumpignore`.
+- Includes a file paths before each file's content for context.
 - Simple CLI interface.
+- Formatted for easy interpretation by LLMs.
 
-## Command-line Options
+### Example Output
+
+```
+//--------------------------------------------------
+// File: src/main.rs
+//--------------------------------------------------
+fn main() {
+    println!("Hello, world!");
+}
+
+//--------------------------------------------------
+// File: src/test.rs
+//--------------------------------------------------
+fn test() {
+    assert_eq!(1, 1);
+}
+```
+
+### Command-line Options
 
 ```
 Collects a codebase into a single text file
@@ -37,22 +57,11 @@ Options:
 
 ### Using Cargo
 
-If you have Rust and Cargo installed, you can install AIDump directly from the
-source:
+If you have Rust and Cargo installed:
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/aidump.git
-cd aidump
-
-# Build and install
-cargo install --path .
+cargo install aidump
 ```
-
-### From Binary Releases
-
-You can download pre-built binaries from the
-[releases page](https://github.com/yourusername/aidump/releases).
 
 ## Usage
 
@@ -75,8 +84,19 @@ aidump -e "*.log,*.tmp,node_modules/*"
 For convenience, AI Code Dump supports a `.dumpignore` file, which works
 similarly to `.gitignore`.
 
-Each line can contain a glob pattern. Empty lines and lines starting with `#`
-are ignored.
+Files matching glob patterns in `.dumpignore` will be excluded from the output.
+Empty lines and lines starting with `#` are ignored.
+
+```
+# Ignore all folders named `secrets`.
+secrets/
+
+# Ignore the `tests` folder located in the same directory as the `.dumpignore` file.
+/tests/
+
+# Ignore all shell scripts.
+*.sh
+```
 
 ## Why AI Code Dump?
 

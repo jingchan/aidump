@@ -1,9 +1,9 @@
 [package]
 name = "aidump"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Jing Chan <me@jingchan.com>"]
 license = "MIT"
-description = "Turn codebases into a single file"
+description = "Turn project folder into a single file for AI and vibe coding."
 readme = "README.md"
 homepage = "https://github.com/jingchan/aidump"
 repository = "https://github.com/jingchan/aidump"
