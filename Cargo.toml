@@ -1,0 +1,21 @@
+[package]
+name = "aidump"
+version = "0.1.0"
+authors = ["Jing Chan <me@jingchan.com>"]
+license = "MIT"
+description = "Turn codebases into a single file"
+readme = "README.md"
+homepage = "https://github.com/jingchan/aidump"
+repository = "https://github.com/jingchan/aidump"
+keywords = ["cli", "vibe", "concat", "dump", "code"]
+categories = ["command-line-utilities"]
+edition = "2024"
+
+[[bin]]
+name = "aidump"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.5.32", features = ["derive"] }
+glob = "0.3.2"
+ignore = "0.4.23"
